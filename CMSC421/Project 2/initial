@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+class FunctionNode:
+	def __init__(self, parent):
+		self.height = 0
+		if parent != None:
+			self.height = parent.height + 1
+		self.parent = parent
+		self.type = None
+		self.operator = None
+		self.arguments = []
+		oper = random.randint(0, 8)
+		if oper < height:
+			# operator
+			degree = random.randint(1, 2)
+			if degree == 1:
+				# unary operator
+				self.type = "u"
+				u = random.randint(0, 2)
+				if u == 0:
+					# e
+					self.operator = "e"
+				elif u == 1:
+					# sin
+					self.operator = "sin"
+				elif u == 2:
+					# cos
+					self.operator = "cos"
+				else:
+					sys.exit(0)
+				self.arguments.append(FunctionNode(self))
+			elif degree == 2:
+				# binary operator
+				self.type = "b"
+				b = random.randint(0, 2)
+				if b == 0:
+					# addition
+					self.operator = "+"
+				elif b == 1:
+					# subtraction
+					self.operator = "-"
+				elif b == 2:
+					# multiplication
+					self.operator = "*"
+				else:
+					sys.exit(0)
+				self.arguments.append(FunctionNode(self))
+				self.arguments.append(FunctionNode(self))
+			else:
+				sys.exit(0)
+		else:
+			# variable
+			self.type = "v"
+			num = random.rantint(0, 1)
+			if num == 0:
+				# x
+				self.operator = "x"
+			elif num == 1:
+				# real number
+				self.operator = random.randint(-sys.maxsize - 1, sys.maxsize)
+			else:
+				sys.exit(0)
+
+	def listFunction:
+		list = []
+		if self.type == u or self.type == b:
+			list.append(self.operator)
+			list.extend(self.arguments.listFunction)
+		elif self.type == v:
+			list.append(self.operator)
+import sys
+import random
+
+function = FunctionNode(None)
+functionList = function.listFunction
+print(functionList)
